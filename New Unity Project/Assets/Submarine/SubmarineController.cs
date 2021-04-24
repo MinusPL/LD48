@@ -6,21 +6,30 @@ public class SubmarineController : MonoBehaviour
 {
     public Rigidbody rigidbody;
 
+    //Steering
     public float maxSpeed = 5.0f;
-
     public float acceleration = 2.0f;
-
     public float braking = 3.5f;
-
     private float currentSpeed = 0.0f;
-
     public float maxAngle = 15.0f;
 
-    private float currentAngle = 0.0f;
+    private short currentDirection = 1;
+    private bool rotating = false;
+    public float rotateSpeed = 360.0f;
+    public float rotateTime = 1.0f;
+    private float rotateTimer = 0.0f;
+    private Quaternion last;
+
+    //Health and stuff
+
+    public float maxHealth = 800.0f;
+    private float currentHealth;
 
     // Start is called before the first frame update
     void Start()
     {
+        currentHealth = maxHealth;
+
     }
 
     // Update is called once per frame
@@ -31,21 +40,62 @@ public class SubmarineController : MonoBehaviour
 
         Vector3 direction = new Vector3(h, v, 0.0f).normalized;
 
-        if (direction != Vector3.zero)
+        if(!rotating)
+		{
+            if (direction.x < 0 && currentDirection != -1)
+            {
+                rotating = true;
+                currentDirection = -1;
+                last = transform.rotation;
+            }
+            if (direction.x > 0 && currentDirection != 1)
+            {
+                rotating = true;
+                currentDirection = 1;
+                last = transform.rotation;
+            }
+        }
+
+        if (direction.magnitude > 0.05f)
 		{
             currentSpeed += acceleration * Time.deltaTime;
             currentSpeed = currentSpeed > maxSpeed ? maxSpeed : currentSpeed;
 		}
 		else
 		{
-            currentSpeed -= braking * Time.deltaTime;
-            currentSpeed = currentSpeed < 0.0f ? 0.0f : currentSpeed;
+            currentSpeed = 0.0f;
         }
 
         Vector3 velocity = direction * currentSpeed;
+        if (!rotating)
+        {
+            rigidbody.AddForce(velocity);
+            transform.eulerAngles = new Vector3(0.0f, transform.eulerAngles.y, (maxAngle * direction.y));
+        }
+        else
+		{
+            rotateTimer += Time.deltaTime;
+            float ratio = Mathf.Clamp(rotateTimer / rotateTime, 0.0f, 1.0f);
+            float targetRotation;
+            if (currentDirection == -1)
+                targetRotation = 180.0f;
+            else
+                targetRotation = 360.0f;
+            float angle = Mathf.Lerp(last.eulerAngles.y, targetRotation, ratio);
+            transform.rotation = Quaternion.Euler(0.0f, angle, 0.0f);
 
-        rigidbody.AddForce(velocity);
-
-        transform.eulerAngles = new Vector3(0.0f, 0.0f, (maxAngle * direction.y) + 90.0f);
+            if (ratio == 1.0f)
+            {
+                rotating = false;
+                rotateTimer = 0;
+                if (targetRotation == 360.0f)
+                    transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+            }
+        }
     }
+
+	private void OnCollisionEnter(Collision collision)
+	{
+        Debug.Log(collision.relativeVelocity.magnitude);
+	}
 }
