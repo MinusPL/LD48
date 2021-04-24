@@ -6,6 +6,8 @@ public class SubmarineController : MonoBehaviour
 {
     public Rigidbody rigidbody;
 
+    public Transform model;
+
     //Steering
     public float maxSpeed = 5.0f;
     public float acceleration = 2.0f;
@@ -20,10 +22,16 @@ public class SubmarineController : MonoBehaviour
     private float rotateTimer = 0.0f;
     private Quaternion last;
 
-    //Health and stuff
+    //Health and armor
 
     public float maxHealth = 800.0f;
-    private float currentHealth;
+    public float currentHealth;
+
+    public float armor = 0;
+
+    //Statistics
+    public float maxDepth = 0.0f;
+    public float lightPower = 0.0f;
 
     //Amount of damage multiplied by magnitude of hit
     public float damageFromHit = 3.0f;
@@ -33,6 +41,17 @@ public class SubmarineController : MonoBehaviour
     {
         currentHealth = maxHealth;
 
+        float thicccc_or_slm = Random.Range(0.0f, 1.0f);
+        //float thicccc_or_slm = 0.01f;
+        Debug.Log(thicccc_or_slm);
+        if(thicccc_or_slm < 0.02f)
+		{
+            model.localScale = new Vector3(1.0f,1.0f,10.0f);
+		}
+        else if (thicccc_or_slm > 0.98f)
+        {
+            model.localScale = new Vector3(1.0f, 1.0f, 0.05f);
+        }
     }
 
     // Update is called once per frame
@@ -97,6 +116,15 @@ public class SubmarineController : MonoBehaviour
             }
         }
 
+        //Depth
+
+        if(transform.position.y < -maxDepth)
+		{
+            float dmgRatio = Mathf.Clamp(Mathf.Abs(transform.position.y + maxDepth) / 100.0f, 0.0f, 1.0f);
+            Damage(100.0f * dmgRatio);
+		}
+
+
         //TODO
         if(currentHealth <= 0.0f)
 		{
@@ -104,10 +132,15 @@ public class SubmarineController : MonoBehaviour
 		}
     }
 
+    public void Damage(float dmg)
+	{
+        currentHealth -= dmg * (100.0f / (100.0f + armor));
+    }
+
 	private void OnCollisionEnter(Collision collision)
 	{
-        if(collision.relativeVelocity.magnitude > 0.1f)
-            currentHealth -= collision.relativeVelocity.magnitude * damageFromHit;
+        if (collision.relativeVelocity.magnitude > 0.1f)
+            currentHealth -= collision.relativeVelocity.magnitude * damageFromHit * (100.0f / (100.0f + armor));
 
 	}
 }
