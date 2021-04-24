@@ -26,10 +26,19 @@ public class AnimatedMenuOption : MonoBehaviour
 
     public void StopAnimate()
     {
-        StopCoroutine(coroutine);
+        /*if (m_TextComponent != null)
+        {
+            
+        }*/
+        StopAllCoroutines();
         ResetGeometry();
     }
-    
+
+    public void OnEnable()
+    {
+        ResetGeometry();
+    }
+
     private void UpdateMesh(Vector3[] _vertex, int index)
     {
         m_TextComponent.mesh.vertices = _vertex;
@@ -40,6 +49,7 @@ public class AnimatedMenuOption : MonoBehaviour
     
     void ResetGeometry()
     {
+        if (m_TextComponent == null) return;
         TMP_TextInfo textInfo = m_TextComponent.textInfo;
         for (int i = 0; i < textInfo.meshInfo.Length; i++)
         {
