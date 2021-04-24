@@ -25,6 +25,9 @@ public class SubmarineController : MonoBehaviour
     public float maxHealth = 800.0f;
     private float currentHealth;
 
+    //Amount of damage multiplied by magnitude of hit
+    public float damageFromHit = 3.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -56,19 +59,20 @@ public class SubmarineController : MonoBehaviour
             }
         }
 
-        if (direction.magnitude > 0.05f)
-		{
-            currentSpeed += acceleration * Time.deltaTime;
-            currentSpeed = currentSpeed > maxSpeed ? maxSpeed : currentSpeed;
-		}
-		else
-		{
-            currentSpeed = 0.0f;
-        }
-
-        Vector3 velocity = direction * currentSpeed;
         if (!rotating)
         {
+
+            if (direction.magnitude > 0.05f)
+            {
+                currentSpeed += acceleration * Time.deltaTime;
+                currentSpeed = currentSpeed > maxSpeed ? maxSpeed : currentSpeed;
+            }
+            else
+            {
+                currentSpeed = 0.0f;
+            }
+
+            Vector3 velocity = direction * currentSpeed;
             rigidbody.AddForce(velocity);
             transform.eulerAngles = new Vector3(0.0f, transform.eulerAngles.y, (maxAngle * direction.y));
         }
@@ -92,10 +96,18 @@ public class SubmarineController : MonoBehaviour
                     transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
             }
         }
+
+        //TODO
+        if(currentHealth <= 0.0f)
+		{
+            Destroy(gameObject);
+		}
     }
 
 	private void OnCollisionEnter(Collision collision)
 	{
-        Debug.Log(collision.relativeVelocity.magnitude);
+        if(collision.relativeVelocity.magnitude > 0.1f)
+            currentHealth -= collision.relativeVelocity.magnitude * damageFromHit;
+
 	}
 }
