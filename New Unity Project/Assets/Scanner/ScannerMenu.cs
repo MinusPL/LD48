@@ -52,12 +52,4 @@ public class ScannerMenu : MonoBehaviour
         entityTexture.texture = entityInfo.texture;
         entityDescription.text = entityInfo.description;
     }
-
-    public void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            OpenMenu(scannerController.getEntityDatabase());
-        }
-    }
 }
