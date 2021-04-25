@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UMenuTexts : MonoBehaviour
+public class UpgMenuValues : MonoBehaviour
 {
     public GameObject submarine;
     private SubmarineController subController;
@@ -17,6 +17,6 @@ public class UMenuTexts : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        statValues.text = subController.maxHealth + "\r\n" + subController.armor + "/" + Mathf.Round(100f-(100f/(subController.armor+100f))*100f) +"%\r\n" + subController.maxDepth + "m\r\n" + subController.maxSpeed + "m/s\r\n" + subController.lightPower + "m\r\n";
+        statValues.text = subController.maxHealth + "\r\n" + subController.armor + "/" + Mathf.Round(100f-(100f/(subController.armor+100f))*100f) +"%\r\n" + subController.maxDepth + "m\r\n" + subController.maxSpeed + "m/s\r\n" + subController.lightPower + "\r\n" + subController.currentHealth;
     }
 }

@@ -36,17 +36,6 @@ public class SubmarineController : MonoBehaviour
     //Amount of damage multiplied by magnitude of hit
     public float damageFromHit = 3.0f;
 
-<<<<<<< Updated upstream
-=======
-    public float armor = 0;
-
-    //Statistics
-    public float maxDepth = 0.0f;
-    public float lightPower = 0.0f;
-    //Amount of damage multiplied by magnitude of hit
-    public float damageFromHit = 3.0f;
-
->>>>>>> Stashed changes
     // Start is called before the first frame update
     void Start()
     {
