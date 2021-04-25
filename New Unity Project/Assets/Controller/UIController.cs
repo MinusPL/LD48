@@ -9,6 +9,7 @@ public class UIController : MonoBehaviour
     public Canvas pauseMenu;
     public Canvas pauseMenuOptions;
     public Canvas logMenu;
+    public ScannerController scannerController;
     private bool upgMenuOpen = false;
     private bool pauseMenuOpen = false;
     private bool logMenuOpen = false;
@@ -22,10 +23,12 @@ public class UIController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.U))
         {
-            if(!upgMenuOpen)
+            if(!upgMenuOpen && !pauseMenuOpen)
             {
                 upgMenu.gameObject.SetActive(true);
                 upgMenuOpen = true;
+                logMenu.gameObject.SetActive(false);
+                logMenuOpen = false;
             }
             else
             {
@@ -39,6 +42,10 @@ public class UIController : MonoBehaviour
             {
                 pauseMenu.gameObject.SetActive(true);
                 pauseMenuOpen = true;
+                logMenu.gameObject.SetActive(false);
+                logMenuOpen = false;
+                upgMenu.gameObject.SetActive(false);
+                upgMenuOpen = false;
             }
             else
             {
@@ -49,10 +56,13 @@ public class UIController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            if (!logMenuOpen)
+            if (!logMenuOpen && !pauseMenuOpen)
             {
                 logMenu.gameObject.SetActive(true);
                 logMenuOpen = true;
+                logMenu.GetComponentInChildren<ScannerMenu>().OpenMenu(scannerController.getEntityDatabase());
+                upgMenu.gameObject.SetActive(false);
+                upgMenuOpen = false;
             }
             else
             {
