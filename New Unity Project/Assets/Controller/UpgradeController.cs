@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UpgradeController : MonoBehaviour
 {
-    private int scraps = 0;
+    private int scraps = 100000;
     public GameObject submarine;
     private SubmarineController subController;
     public int healthUpgradeCost = 50;
@@ -57,7 +57,7 @@ public class UpgradeController : MonoBehaviour
     }
     public void UpgradeSpeed() 
     {
-        if (subController.maxSpeed != (baseSpeed*1.5f) && scraps >= speedUpgradeCost)
+        if ((subController.maxSpeed < (baseSpeed*1.5f)) && scraps >= speedUpgradeCost)
         {
             subController.maxSpeed += baseSpeed/5f;
             scraps -= speedUpgradeCost;
