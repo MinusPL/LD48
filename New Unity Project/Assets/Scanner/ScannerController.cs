@@ -14,6 +14,11 @@ public class ScannerController : MonoBehaviour
 
     private GameObject scanningObject = null;
     // Update is called once per frame
+
+    public Dictionary<int, EntityInfo> getEntityDatabase()
+    {
+        return entityDatabase;
+    }
     void Update()
     {
         var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
