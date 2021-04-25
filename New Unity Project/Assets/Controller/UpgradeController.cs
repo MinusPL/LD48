@@ -19,7 +19,6 @@ public class UpgradeController : MonoBehaviour
     {
         subController = submarine.GetComponent<SubmarineController>();
         baseSpeed = subController.maxSpeed;
-        if (Input.GetKeyDown(KeyCode.P)) Damage();
     }
 
     // Update is called once per frame
