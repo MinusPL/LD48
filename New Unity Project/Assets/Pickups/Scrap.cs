@@ -10,6 +10,10 @@ public class Scrap : MonoBehaviour
 	public void Start()
 	{
 		amount = Random.Range(20, 35);
+		float x = Random.Range(-15.0f, 15.0f);
+		float y = Random.Range(-20.0f, 20.0f);
+		float z = Random.Range(-180.0f, 180.0f);
+		transform.rotation = Quaternion.Euler(x, y, z);
 		controller = GameObject.Find("UpgradeController").GetComponent<UpgradeController>();
 	}
 
