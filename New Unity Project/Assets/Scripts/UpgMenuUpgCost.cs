@@ -10,7 +10,7 @@ public class UpgMenuUpgCost : MonoBehaviour
     void Start()
     {
         upgCost = GetComponent<Text>();
-        upgCost.text = "Upgrade cost\r\n" + upgController.healthUpgradeCost + "\r\n" + upgController.armorUpgradeCost + "\r\n" + upgController.depthUpgradeCost + "\r\n" + upgController.speedUpgradeCost + "\r\n" + upgController.lightUpgradeCost + "\r\n" + upgController.repairCost;
+        upgCost.text = "Scrap cost\r\n" + upgController.healthUpgradeCost + "\r\n" + upgController.armorUpgradeCost + "\r\n" + upgController.depthUpgradeCost + "\r\n" + upgController.speedUpgradeCost + "\r\n" + upgController.lightUpgradeCost + "\r\n" + upgController.repairCost;
     }
 
     // Update is called once per frame
