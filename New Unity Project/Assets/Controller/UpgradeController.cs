@@ -24,7 +24,6 @@ public class UpgradeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(scraps);
     }
 
     public void AddScrap(int amount)
