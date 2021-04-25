@@ -7,6 +7,7 @@ public class UIController : MonoBehaviour
 {
     public Canvas upgMenu;
     public Canvas pauseMenu;
+    public Canvas pauseMenuOptions;
     public Canvas logMenu;
     private bool upgMenuOpen = false;
     private bool pauseMenuOpen = false;
@@ -42,6 +43,7 @@ public class UIController : MonoBehaviour
             else
             {
                 pauseMenu.gameObject.SetActive(false);
+                pauseMenuOptions.gameObject.SetActive(false);
                 pauseMenuOpen = false;
             }
         }
