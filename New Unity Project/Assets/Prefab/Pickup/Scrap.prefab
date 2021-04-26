@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1960523761752119978}
   - component: {fileID: 1960523761752119981}
   - component: {fileID: 1357859085801832399}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Scrap
   m_TagString: Entity
   m_Icon: {fileID: 0}
@@ -145,7 +145,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 50b2c16c84c9a874294bb2064075f03f, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50b2c16c84c9a874294bb2064075f03f, type: 3}

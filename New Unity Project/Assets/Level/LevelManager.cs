@@ -20,9 +20,9 @@ public class LevelManager : MonoBehaviour
 
     // Start is called before the first frame update
     public GameObject scrapPrefab;
-    public float startDistanceForScrap = 10.0f;
-    public float endDistanceForScrap = 50.0f;
-    public float chanceForScrap = 20.0f;
+    public float startDistanceForScrap = 7.5f;
+    public float endDistanceForScrap = 40.0f;
+    public float chanceForScrap = 30.0f;
 
     public float startDistance = 10.0f;
     public float endDistance = 40.0f;
@@ -53,7 +53,7 @@ public class LevelManager : MonoBehaviour
 
     //Angler
     public GameObject anglerPrefab;
-    public float maxChanceForAngler = 30.0f;
+    public float maxChanceForAngler = 15.0f;
     public float minDepthForAngler = 1000.0f;
     public float maxDepthForAngler = 1300.0f;
 
@@ -163,8 +163,8 @@ public class LevelManager : MonoBehaviour
     public void SpawnScrap()
 	{
         Vector2 newCoordinates = Random.insideUnitCircle * endDistanceForScrap;
-        Vector3 newLocation = player.transform.position + new Vector3(newCoordinates.y, newCoordinates.y);
-        if (Vector3.Distance(player.transform.position, newLocation) < startDistanceForScrap) return;
+        Vector3 newLocation = player.transform.position + new Vector3(newCoordinates.x, newCoordinates.y);
+        //if (Vector3.Distance(player.transform.position, newLocation) < startDistanceForScrap) return;
         var obj = Instantiate(scrapPrefab);
         obj.transform.position = new Vector3(newLocation.x, newLocation.y);
     }
@@ -172,7 +172,7 @@ public class LevelManager : MonoBehaviour
     public void SpawnShark()
     {
         Vector2 newCoordinates = Random.insideUnitCircle * endDistance;
-        Vector3 newLocation = player.transform.position + new Vector3(newCoordinates.y, newCoordinates.y);
+        Vector3 newLocation = player.transform.position + new Vector3(newCoordinates.x, newCoordinates.y);
         if (Vector3.Distance(player.transform.position, newLocation) < startDistance) return;
         var obj = Instantiate(sharkPrefab);
         obj.transform.position = new Vector3(newLocation.x, newLocation.y);
@@ -183,7 +183,7 @@ public class LevelManager : MonoBehaviour
     public void SpawnMShark()
     {
         Vector2 newCoordinates = Random.insideUnitCircle * endDistance;
-        Vector3 newLocation = player.transform.position + new Vector3(newCoordinates.y, newCoordinates.y);
+        Vector3 newLocation = player.transform.position + new Vector3(newCoordinates.x, newCoordinates.y);
         if (Vector3.Distance(player.transform.position, newLocation) < startDistance) return;
         var obj = Instantiate(melonShark);
         obj.transform.position = new Vector3(newLocation.x, newLocation.y);
@@ -194,7 +194,7 @@ public class LevelManager : MonoBehaviour
     public void SpawnDolphin()
     {
         Vector2 newCoordinates = Random.insideUnitCircle * endDistance;
-        Vector3 newLocation = player.transform.position + new Vector3(newCoordinates.y, newCoordinates.y);
+        Vector3 newLocation = player.transform.position + new Vector3(newCoordinates.x, newCoordinates.y);
         if (Vector3.Distance(player.transform.position, newLocation) < startDistance) return;
         var obj = Instantiate(dolphin);
         obj.transform.position = new Vector3(newLocation.x, newLocation.y);
@@ -205,7 +205,7 @@ public class LevelManager : MonoBehaviour
     public void SpawnAgemlodon()
     {
         Vector2 newCoordinates = Random.insideUnitCircle * endDistance;
-        Vector3 newLocation = player.transform.position + new Vector3(newCoordinates.y, newCoordinates.y);
+        Vector3 newLocation = player.transform.position + new Vector3(newCoordinates.x, newCoordinates.y);
         if (Vector3.Distance(player.transform.position, newLocation) < startDistance) return;
         var obj = Instantiate(agemlodon);
         obj.transform.position = new Vector3(newLocation.x, newLocation.y);
@@ -217,7 +217,7 @@ public class LevelManager : MonoBehaviour
 	{
         int depth;
         Vector2 newCoordinates = Random.insideUnitCircle * endDistance;
-        Vector3 newLocation = player.transform.position + new Vector3(newCoordinates.y, newCoordinates.y);
+        Vector3 newLocation = player.transform.position + new Vector3(newCoordinates.x, newCoordinates.y);
         int i = Random.Range(1, 99);
         if (i < 34) depth = 1;
         else if (i < 67) depth = 0;
