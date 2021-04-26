@@ -44,7 +44,6 @@ public class SubmarineController : MonoBehaviour
         float thicccc_or_slm = Random.Range(0.0f, 1.0f);
         //float thicccc_or_slm = 0.01f;
         Debug.Log(thicccc_or_slm);
-        //TODO: HERE IS A BUG, Model is not assigned in Inspector
         if(thicccc_or_slm < 0.02f)
 		{
             model.localScale = new Vector3(1.0f,1.0f,10.0f);
@@ -140,8 +139,13 @@ public class SubmarineController : MonoBehaviour
 
 	private void OnCollisionEnter(Collision collision)
 	{
-        if (collision.relativeVelocity.magnitude > 0.1f)
-            currentHealth -= collision.relativeVelocity.magnitude * damageFromHit * (100.0f / (100.0f + armor));
+		if (collision.relativeVelocity.magnitude > 0.1f)
+			currentHealth -= collision.relativeVelocity.magnitude * damageFromHit * (100.0f / (100.0f + armor));
 
+	}
+
+	public void OnDrawGizmos()
+	{
+        Gizmos.DrawWireSphere(transform.position, 3.5f);
 	}
 }

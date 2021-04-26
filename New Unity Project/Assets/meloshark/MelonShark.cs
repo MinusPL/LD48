@@ -5,20 +5,28 @@ using UnityEngine;
 public class MelonShark : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float moveSpeed = 2.0f;
+    public float moveSpeed = 1.0f;
     public float attackRange = 7.0f;
     public float attackSpeedMultiplier = 2.5f;
-    
+
     public Transform raycastSource;
 
     public short dir = 1;
+    public float minDistanceFromPlayer = 4.0f;
+    public float randomMovingTime = 10.0f;
+    private float rmTimer = 0.0f;
 
     //"AI"
+    private bool locked = false;
     private int state = 1;
     private bool playerInSight = false;
     private Transform playerTransform;
     private float angle;
     private float radius;
+    private Vector3 target;
+    private Vector3 source;
+    public float estimatedMoveTime = 0.0f;
+    private float moveTime = 0.0f;
 
     void Start()
     {
@@ -33,26 +41,23 @@ public class MelonShark : MonoBehaviour
         {
             case 1:
                 speed = moveSpeed;
-                if (playerInSight)
+                if (playerInSight && !locked)
                 {
-                    if (Vector3.Distance(playerTransform.position, transform.position) < attackRange)
-                    {
-                        state = 2;
-                        angle = Mathf.Deg2Rad * Vector2.SignedAngle(playerTransform.position, transform.position);
-                        radius = Vector3.Distance(transform.position, playerTransform.position);
-                        Debug.Log(angle);
-                    }
+                    state = 2;
+                    moveTime = 0.0f;
                 }
                 transform.position += Vector3.right * (dir * speed * Time.deltaTime);
                 break;
             case 2:
-                //speed = moveSpeed * attackSpeedMultiplier;
-                speed = moveSpeed;
-                angle += speed * Time.deltaTime;
-                var offset = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0) * radius;
-                transform.position = playerTransform.position + offset;
-                Debug.Log(Mathf.Deg2Rad * Vector2.SignedAngle(playerTransform.position, transform.position));
-                if (!playerInSight) state = 1;
+                rmTimer += Time.deltaTime;
+                generateTargetPos();
+                state = 3;
+                break;
+            case 3:
+                rmTimer += Time.deltaTime;
+                moveTowardsTarget();
+                if (transform.position == target) state = 2;
+                else if (rmTimer >= randomMovingTime) { state = 1; locked = true; rmTimer = 0.0f; moveTime = 0.0f; }
                 break;
         }
 
@@ -88,5 +93,41 @@ public class MelonShark : MonoBehaviour
             }
         }
 
+    }
+
+    private void generateTargetPos()
+	{
+        source = transform.position;
+        while (true)
+        {
+            float x = Random.Range(Camera.main.ScreenToWorldPoint(new Vector2(0, 0)).x, Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height)).x);
+            float y = Random.Range(Camera.main.ScreenToWorldPoint(new Vector2(0, 0)).y, Camera.main.ScreenToWorldPoint(new Vector2(0, Screen.height)).y);
+
+            Vector3 pos = new Vector3(x, y, 0.0f);
+            if (Vector3.Distance(pos, playerTransform.position) > minDistanceFromPlayer)
+			{
+                target = pos;
+                break;
+			}
+        }
+        float fullLen = Vector3.Distance(source, target);
+        estimatedMoveTime = fullLen / moveSpeed;
+    }
+
+    private void moveTowardsTarget()
+	{
+        moveTime += Time.deltaTime;
+        if (moveTime < estimatedMoveTime)
+        {
+            float ratio = moveTime / estimatedMoveTime;
+            Vector3 diff = target - source;
+            transform.position = source + diff * ratio;
+
+            //{10.0, 5.0}
+        }
+        else
+		{
+            transform.position = target;
+		}
     }
 }

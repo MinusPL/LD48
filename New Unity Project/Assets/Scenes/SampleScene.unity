@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 135776321}
-  model: {fileID: 0}
+  model: {fileID: 1296148828349105186}
   maxSpeed: 200
   acceleration: 175
   braking: 100
@@ -419,6 +419,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 4a024e2e2b1f05840b7804f8dc6a606a, type: 2}
+    - target: {fileID: 5866666021909216657, guid: 4867e7e96d804a748bba15d535a3dc41, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4867e7e96d804a748bba15d535a3dc41, type: 3}
 --- !u!4 &441391860 stripped
@@ -816,7 +820,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &702170134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5883,10 +5887,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1626711113}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.83, y: 2.64, z: 0}
+  m_LocalPosition: {x: -10.95, y: 2.02, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 441391860}
+  - {fileID: 2100989727}
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5901,7 +5906,7 @@ Rigidbody:
   m_Mass: 100
   m_Drag: 2
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 120
@@ -5917,9 +5922,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 1
-  m_Height: 9
+  m_Height: 9.3
   m_Direction: 0
-  m_Center: {x: -0.8, y: 0, z: 0}
+  m_Center: {x: -1.2, y: 0, z: 0}
 --- !u!114 &1626711117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5932,6 +5937,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22c54667681a5be4695ec7d1859f1412, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 2
+  attackRange: 7
+  attackSpeedMultiplier: 2.5
+  raycastSource: {fileID: 2100989727}
+  dir: 1
+  minDistanceFromPlayer: 4
+  randomMovingTime: 10
+  estimatedMoveTime: 0
 --- !u!1 &1734518848
 GameObject:
   m_ObjectHideFlags: 0
@@ -6187,6 +6200,36 @@ PrefabInstance:
       objectReference: {fileID: 519420031}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07caa8113b2bb404882937cb22e79efb, type: 3}
+--- !u!1 &2100989726
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2100989727}
+  m_Layer: 0
+  m_Name: raycastSource
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2100989727
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2100989726}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1626711114}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &156257744050148574
 GameObject:
   m_ObjectHideFlags: 0
