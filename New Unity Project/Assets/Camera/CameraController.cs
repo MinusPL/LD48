@@ -10,6 +10,11 @@ public class CameraController : MonoBehaviour
     public float maxY = 3.0f;
     public float minX = -7.5f;
     public float maxX = 7.5f;
+    
+    public float m_XOffset = 0;
+    public float m_YOffset = 0;
+    private float margin = 0.1f;
+    public float m_DampTime = 10f;
 
     // Start is called before the first frame update
     void Start()
