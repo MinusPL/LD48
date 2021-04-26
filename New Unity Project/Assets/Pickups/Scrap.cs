@@ -17,6 +17,11 @@ public class Scrap : MonoBehaviour
 		controller = GameObject.Find("UpgradeController").GetComponent<UpgradeController>();
 	}
 
+	public void Update()
+	{
+		if (Vector3.Distance(transform.position, Camera.main.transform.position) > 100.0f) Destroy(gameObject);
+	}
+
 	public void OnTriggerEnter(Collider other)
 	{
 		if (other.CompareTag("Player"))

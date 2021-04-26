@@ -1,34 +1,7 @@
 fileFormatVersion: 2
-guid: 159e4037e0762dd44806c2620f2f6b30
+guid: 8da513f66ed8aec43a60c47c5992b96c
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 9091618477778627961
-    second: rybki_0
-  - first:
-      213: -4437250589075126909
-    second: rybki_1
-  - first:
-      213: 1965943413785903320
-    second: rybki_2
-  - first:
-      213: 3412085500223940104
-    second: rybki_3
-  - first:
-      213: -2682958916794622966
-    second: rybki_4
-  - first:
-      213: -2699105074841664112
-    second: rybki_5
-  - first:
-      213: -4182095820816987825
-    second: rybki_6
-  - first:
-      213: 4112846863136231777
-    second: rybki_7
-  - first:
-      213: -5745811757263216953
-    second: rybki_8
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -68,7 +41,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -92,30 +65,6 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Standalone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1

@@ -42,6 +42,7 @@ public class Shark : MonoBehaviour
 		}
 
         transform.position += dir * Vector3.right * speed * Time.deltaTime;
+        if (Vector3.Distance(transform.position, Camera.main.transform.position) > 100.0f) Destroy(gameObject);
     }
 
     public void SearchForPlayer()

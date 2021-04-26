@@ -11,6 +11,7 @@ public class LevelManager : MonoBehaviour
 
     //Required stuff (player handle etc)
     public GameObject player;
+    public int helenaCounter = 5;
 
     //variables to regulate spawn rates etc.
 
@@ -32,6 +33,7 @@ public class LevelManager : MonoBehaviour
     public float endDistanceForAngler = 40.0f;
     public float maxChanceForAngler = 30.0f;
     public float minDepthForAngler = 1000.0f;
+    public float maxDepthForAngler = 1300.0f;
 
     //Other values
     public float timeForSpawn = 0.5f;
@@ -41,10 +43,7 @@ public class LevelManager : MonoBehaviour
     //float minV = 0.07f;
     void Start()
     {
-        for(int i = 0; i < 1000; i++)
-		{
-            SpawnAngler();
-		}
+
     }
 
     // Update is called once per frame
@@ -53,6 +52,7 @@ public class LevelManager : MonoBehaviour
         spawnerTimer += Time.deltaTime;
         if (spawnerTimer >= timeForSpawn)
         {
+            float playerDepth = Mathf.Abs(player.transform.position.y);
             spawnerTimer = 0.0f;
             //Scrap generator
             float chance = Random.Range(0.0f, 100.0f);
@@ -66,6 +66,20 @@ public class LevelManager : MonoBehaviour
             {
                 SpawnShark();
             }
+
+            if(player.transform.position.y < -990.0f)
+			{
+                float anglerChance;
+                if (playerDepth > minDepthForAngler)
+                    anglerChance = ((playerDepth - minDepthForAngler) / (maxDepthForAngler - minDepthForAngler)) * maxChanceForAngler;
+                else
+                    anglerChance = 0.01f;
+
+                if(chance <= anglerChance)
+				{
+                    SpawnAngler();
+				}
+			}
         }
 
         //UpdateFog();
@@ -87,17 +101,18 @@ public class LevelManager : MonoBehaviour
 
     public void SpawnScrap()
 	{
-        Vector2 newLocation = Random.insideUnitCircle * endDistanceForScrap;
-
-        if (Vector3.Distance(player.transform.position, new Vector3(newLocation.x, newLocation.y, 0.0f)) < startDistanceForScrap) return;
+        Vector2 newCoordinates = Random.insideUnitCircle * endDistanceForScrap;
+        Vector3 newLocation = player.transform.position + new Vector3(newCoordinates.y, newCoordinates.y);
+        if (Vector3.Distance(player.transform.position, newLocation) < startDistanceForScrap) return;
         var obj = Instantiate(scrapPrefab);
         obj.transform.position = new Vector3(newLocation.x, newLocation.y);
     }
 
     public void SpawnShark()
 	{
-        Vector2 newLocation = Random.insideUnitCircle * endDistanceForShark;
-        if (Vector3.Distance(player.transform.position, new Vector3(newLocation.x, newLocation.y, 0.0f)) < startDistanceForShark) return;
+        Vector2 newCoordinates = Random.insideUnitCircle * endDistanceForShark;
+        Vector3 newLocation = player.transform.position + new Vector3(newCoordinates.y, newCoordinates.y);
+        if (Vector3.Distance(player.transform.position, newLocation) < startDistanceForShark) return;
         var obj = Instantiate(sharkPrefab);
         obj.transform.position = new Vector3(newLocation.x, newLocation.y);
         float side = Vector3.Dot(obj.transform.position, player.transform.position);
@@ -106,8 +121,9 @@ public class LevelManager : MonoBehaviour
 
     public void SpawnAngler()
 	{
-        int depth = 0;
-        Vector2 newLocation = Random.insideUnitCircle * endDistanceForScrap;
+        int depth;
+        Vector2 newCoordinates = Random.insideUnitCircle * endDistanceForAngler;
+        Vector3 newLocation = player.transform.position + new Vector3(newCoordinates.y, newCoordinates.y);
         int i = Random.Range(1, 99);
         if (i < 34) depth = 1;
         else if (i < 67) depth = 0;
@@ -131,5 +147,6 @@ public class LevelManager : MonoBehaviour
         var obj = Instantiate(anglerPrefab);
         obj.transform.position = new Vector3(newLocation.x, newLocation.y);
         obj.transform.rotation = Random.Range(0, 100) % 2 == 0 ? Quaternion.Euler(0.0f, 0.0f, 0.0f) : Quaternion.Euler(0.0f, 180.0f, 0.0f);
+        obj.GetComponent<AnglerFish>().levelManager = this;
     }
 }

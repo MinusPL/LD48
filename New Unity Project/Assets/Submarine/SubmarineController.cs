@@ -139,7 +139,7 @@ public class SubmarineController : MonoBehaviour
 
 	private void OnCollisionEnter(Collision collision)
 	{
-        Debug.Log(collision.relativeVelocity);
+        //Debug.Log(collision.relativeVelocity);
 
 	}
 

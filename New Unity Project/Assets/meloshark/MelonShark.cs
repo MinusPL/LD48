@@ -105,10 +105,7 @@ public class MelonShark : MonoBehaviour
                 break;
         }
 
-        /*if (playerTransform)
-        {
-            Debug.Log(Vector3.Distance(playerTransform.position, transform.position));
-        }*/
+        if (Vector3.Distance(transform.position, Camera.main.transform.position) > 100.0f) Destroy(gameObject);
     }
 
     public void OnDrawGizmos()
