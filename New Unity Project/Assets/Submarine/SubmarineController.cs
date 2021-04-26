@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SubmarineController : MonoBehaviour
 {
-    public Rigidbody rigidbody;
+    public Rigidbody rbody;
 
     public Transform model;
 
@@ -92,7 +92,7 @@ public class SubmarineController : MonoBehaviour
             }
 
             Vector3 velocity = direction * currentSpeed;
-            rigidbody.AddForce(velocity);
+            rbody.AddForce(velocity);
             transform.eulerAngles = new Vector3(0.0f, transform.eulerAngles.y, (maxAngle * direction.y));
         }
         else

@@ -59,7 +59,7 @@ public class UpgradeController : MonoBehaviour
     {
         if ((subController.maxSpeed < (baseSpeed*1.5f)) && scraps >= speedUpgradeCost)
         {
-            subController.maxSpeed += baseSpeed/5f;
+            subController.maxSpeed += baseSpeed/10f;
             scraps -= speedUpgradeCost;
         }
     }

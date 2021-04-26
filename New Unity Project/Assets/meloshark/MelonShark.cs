@@ -26,12 +26,9 @@ public class MelonShark : MonoBehaviour
     private int state = 1;
     private bool playerInSight = false;
     private Transform playerTransform;
-    private float angle;
-    private float radius;
     private Vector3 target;
     private Vector3 source;
     public float estimatedMoveTime = 0.0f;
-    private float moveTime = 0.0f;
 
     void Start()
     {
@@ -49,7 +46,6 @@ public class MelonShark : MonoBehaviour
                 if (playerInSight && !locked)
                 {
                     state = 2;
-                    moveTime = 0.0f;
                 }
                 transform.position += Vector3.right * (dir * speed * Time.deltaTime);
                 break;
@@ -86,7 +82,7 @@ public class MelonShark : MonoBehaviour
                 rmTimer += Time.deltaTime;
                 moveTowardsTarget();
                 if (Vector3.Distance(transform.position, target) < 1) state = 2;
-                else if (rmTimer >= randomMovingTime) { state = 5; locked = true; rmTimer = 0.0f; moveTime = 0.0f; }
+                else if (rmTimer >= randomMovingTime) { state = 5; locked = true; rmTimer = 0.0f; }
                 break;
             case 5:
                 if (transform.rotation.eulerAngles.y != 0)

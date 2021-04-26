@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LightController : MonoBehaviour
 {
-    public GameObject light;
+    public GameObject lightC;
     public GameObject submarine;
 
     public float maxLightIntensity = 0.8f;
@@ -25,6 +25,6 @@ public class LightController : MonoBehaviour
         float depth = Mathf.Abs(submarine.transform.position.y);
         float dN = Mathf.InverseLerp(minLightDepth, maxLightDepth, depth);
         float nI = Mathf.Lerp(minLightIntensity, maxLightIntensity, dN);
-        light.GetComponent<Light>().intensity = nI;
+        lightC.GetComponent<Light>().intensity = nI;
     }
 }
