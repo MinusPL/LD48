@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2807188233520642789}
   - component: {fileID: 2807188233520642788}
   - component: {fileID: 2807188233520642791}
+  - component: {fileID: 567148828675451216}
   m_Layer: 0
   m_Name: Shark
   m_TagString: Untagged
@@ -51,6 +52,7 @@ MonoBehaviour:
   attackSpeedMultiplier: 2.5
   animator: {fileID: 8619809948953532001}
   raycastSource: {fileID: 2807188233578667275}
+  dir: 1
 --- !u!54 &2807188233520642791
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -67,6 +69,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
+--- !u!114 &567148828675451216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2807188233520642795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dda5eae1843e3545a1777fe69f77dac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entityInfo:
+    id: 0
+    name: 
+    description: 
+    texture: {fileID: 0}
 --- !u!1 &2807188233578667274
 GameObject:
   m_ObjectHideFlags: 0

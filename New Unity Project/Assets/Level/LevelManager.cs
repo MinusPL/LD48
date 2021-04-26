@@ -22,20 +22,29 @@ public class LevelManager : MonoBehaviour
 
     //Shark
     public GameObject sharkPrefab;
-    public float startDistanceForShark = 20.0f;
+    public float startDistanceForShark = 10.0f;
     public float endDistanceForShark = 80.0f;
     public float chanceForShark = 10.0f;
 
+    //Angler
+    public GameObject anglerPrefab;
+    public float startDistanceForAngler = 10.0f;
+    public float endDistanceForAngler = 40.0f;
+    public float maxChanceForAngler = 30.0f;
+    public float minDepthForAngler = 1000.0f;
 
     //Other values
-    public float timeForSpawn = 0.1f;
+    public float timeForSpawn = 0.5f;
 	private float spawnerTimer = 0.0f;
     //public GameObject foreground;
     //float maxV = 0.26f;
     //float minV = 0.07f;
     void Start()
     {
-        
+        for(int i = 0; i < 1000; i++)
+		{
+            SpawnAngler();
+		}
     }
 
     // Update is called once per frame
@@ -93,5 +102,34 @@ public class LevelManager : MonoBehaviour
         obj.transform.position = new Vector3(newLocation.x, newLocation.y);
         float side = Vector3.Dot(obj.transform.position, player.transform.position);
         obj.GetComponent<Shark>().dir = side < 0 ? (short)-1 : (short)1;
+    }
+
+    public void SpawnAngler()
+	{
+        int depth = 0;
+        Vector2 newLocation = Random.insideUnitCircle * endDistanceForScrap;
+        int i = Random.Range(1, 99);
+        if (i < 34) depth = 1;
+        else if (i < 67) depth = 0;
+        else depth = -1;
+
+        float z = 0.0f;
+        switch(depth)
+		{
+            case 1:
+                z = Random.Range(1.5f, 6.0f);
+                break;
+            case 0:
+                z = 0;
+                break;
+            case -1:
+                z = -1.5f;
+                break;
+        }
+
+        if (Vector3.Distance(player.transform.position, new Vector3(newLocation.x, newLocation.y, z)) < startDistanceForAngler) return;
+        var obj = Instantiate(anglerPrefab);
+        obj.transform.position = new Vector3(newLocation.x, newLocation.y);
+        obj.transform.rotation = Random.Range(0, 100) % 2 == 0 ? Quaternion.Euler(0.0f, 0.0f, 0.0f) : Quaternion.Euler(0.0f, 180.0f, 0.0f);
     }
 }

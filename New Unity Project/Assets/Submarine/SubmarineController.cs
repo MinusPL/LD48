@@ -139,13 +139,12 @@ public class SubmarineController : MonoBehaviour
 
 	private void OnCollisionEnter(Collision collision)
 	{
-		if (collision.relativeVelocity.magnitude > 0.1f)
-			currentHealth -= collision.relativeVelocity.magnitude * damageFromHit * (100.0f / (100.0f + armor));
+        Debug.Log(collision.relativeVelocity);
 
 	}
 
 	public void OnDrawGizmos()
 	{
-        Gizmos.DrawWireSphere(transform.position, 3.5f);
+        //Gizmos.DrawWireSphere(transform.position, 3.5f);
 	}
 }
