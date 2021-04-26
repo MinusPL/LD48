@@ -52,6 +52,7 @@ public class MelonShark : MonoBehaviour
                     moveTime = 0.0f;
                 }
                 transform.position += Vector3.right * (dir * speed * Time.deltaTime);
+                transform.rotation = Quaternion.Euler(0, dir == 1 ? 0 : 180, 0);
                 break;
             case 2:
                 rmTimer += Time.deltaTime;
@@ -89,12 +90,21 @@ public class MelonShark : MonoBehaviour
                 else if (rmTimer >= randomMovingTime) { state = 5; locked = true; rmTimer = 0.0f; moveTime = 0.0f; }
                 break;
             case 5:
-                if (transform.rotation.eulerAngles.y != 0)
+                if (transform.rotation.eulerAngles.y != 0 && dir == 1)
                 {
                     transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
                     if (transform.rotation.eulerAngles.y < 5 || transform.rotation.eulerAngles.y > 355)
                     {
                         transform.rotation = Quaternion.Euler(0, 0 , 0);
+                        state = 1;
+                    }
+                }
+                else if (transform.rotation.eulerAngles.y != 180 && dir == -1)
+                {
+                    transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
+                    if ((transform.rotation.eulerAngles.y > 175) && (transform.rotation.eulerAngles.y < 185))
+                    {
+                        transform.rotation = Quaternion.Euler(0, 180 , 0);
                         state = 1;
                     }
                 }
