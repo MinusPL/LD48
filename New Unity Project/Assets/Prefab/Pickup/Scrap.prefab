@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1960523761752119978}
   - component: {fileID: 1960523761752119981}
   - component: {fileID: 1357859085801832399}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Scrap
   m_TagString: Entity
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.25
+  m_Radius: 0.3
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1960523761752119981
 MonoBehaviour:
@@ -142,6 +142,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 50b2c16c84c9a874294bb2064075f03f, type: 3}
       propertyPath: m_Name
       value: scrap
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 50b2c16c84c9a874294bb2064075f03f, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50b2c16c84c9a874294bb2064075f03f, type: 3}
