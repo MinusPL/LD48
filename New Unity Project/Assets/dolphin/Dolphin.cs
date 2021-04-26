@@ -7,14 +7,13 @@ using Random = UnityEngine.Random;
 
 public class Dolphin : MonoBehaviour
 {
-    public float movmentSpeed;
+    public float movmentSpeed = 1;
 
-    private float dir = 1f;
+    public float dir = 1f;
 
     public void Start()
     {
-        dir = Random.Range(0, 100) % 2 == 0 ? 1 : -1;
-        transform.rotation = quaternion.Euler(0, dir == 1 ? 180 : 0, 0);
+        transform.rotation = quaternion.Euler(0, dir == 1 ? 0 : 180, 0);
     }
 
     public void Update()
