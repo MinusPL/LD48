@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ee24553ed9ba314aa6a83c84ad51c31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 10
   moveSpeed: 3
   attackRange: 7
   attackSpeedMultiplier: 2.5
@@ -82,9 +83,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entityInfo:
-    id: 0
-    name: 
-    description: 
+    id: 3
+    name: Miner Shark
+    description: 'Lives down to approximately 2000 meters below the water surface.
+      Has two hard horns growing from its head, resembling a pickaxe. It attacks
+      using its hard head by ramming its prey. '
     texture: {fileID: 0}
 --- !u!1 &2807188233578667274
 GameObject:

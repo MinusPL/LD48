@@ -199,9 +199,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entityInfo:
-    id: 0
-    name: 
-    description: 
+    id: 1
+    name: Dangler
+    description: 'Lives between approximately 2000-4000 meters below the water surface.
+      Small, deep sea fish. Uses a small light affixed to a tendril growing from
+      its head as bait to lure smaller fish to predate on. Quickly moves away when
+      startled by bigger creatures. '
     texture: {fileID: 0}
 --- !u!1001 &8599084832002161852
 PrefabInstance:

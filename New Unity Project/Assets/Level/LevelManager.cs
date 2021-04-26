@@ -188,7 +188,7 @@ public class LevelManager : MonoBehaviour
         var obj = Instantiate(melonShark);
         obj.transform.position = new Vector3(newLocation.x, newLocation.y);
         float side = Vector3.Dot(obj.transform.position, player.transform.position);
-        obj.GetComponent<Shark>().dir = side < 0 ? (short)-1 : (short)1;
+        obj.GetComponent<MelonShark>().dir = side < 0 ? (short)-1 : (short)1;
     }
 
     public void SpawnDolphin()
@@ -199,7 +199,7 @@ public class LevelManager : MonoBehaviour
         var obj = Instantiate(dolphin);
         obj.transform.position = new Vector3(newLocation.x, newLocation.y);
         float side = Vector3.Dot(obj.transform.position, player.transform.position);
-        obj.GetComponent<Shark>().dir = side < 0 ? (short)-1 : (short)1;
+        obj.GetComponent<Dolphin>().dir = side < 0 ? (short)-1 : (short)1;
     }
 
     public void SpawnAgemlodon()

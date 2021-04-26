@@ -119,9 +119,10 @@ GameObject:
   - component: {fileID: 7302072275168871148}
   - component: {fileID: 7302072275168871151}
   - component: {fileID: 7302072275168871146}
+  - component: {fileID: -1233117993287214202}
   m_Layer: 0
   m_Name: BigAnglerfish
-  m_TagString: Untagged
+  m_TagString: Entity
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -201,6 +202,25 @@ MonoBehaviour:
   speed: 765
   body: {fileID: 7302072275168871151}
   rotationSpeed: 200
+--- !u!114 &-1233117993287214202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7302072275168871137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dda5eae1843e3545a1777fe69f77dac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entityInfo:
+    id: 2
+    name: Helena
+    description: 'Part of the Dangler species.  There are many theories for her massive
+      size: radioactive waste, weird genetic mutation, secret government experiment.
+      Due to her size, Helena can hunt much bigger prey, even attacking small submarines. '
+    texture: {fileID: 0}
 --- !u!1001 &7302072274414937306
 PrefabInstance:
   m_ObjectHideFlags: 0
