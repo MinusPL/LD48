@@ -32,7 +32,7 @@ public class UpgradeController : MonoBehaviour
 	}
     public void UpgradeHealth() 
     {
-        if (subController.maxHealth != 2000 && scraps >= healthUpgradeCost)
+        if (subController.maxHealth < 2000 && scraps >= healthUpgradeCost)
         {
             subController.maxHealth += 200;
             subController.currentHealth += 200;
@@ -76,17 +76,14 @@ public class UpgradeController : MonoBehaviour
         if (subController.currentHealth < subController.maxHealth && scraps >= repairCost)
         {
             subController.currentHealth += 50;
-            if (subController.currentHealth < subController.maxHealth)
+            if (subController.currentHealth > subController.maxHealth)
             {
                 subController.currentHealth = subController.maxHealth;
             }
             scraps -= repairCost;
         }
     }
-    public void Damage()
-    {
-        subController.currentHealth -= 50;
-    }
+
     public int getScrapCount()
     {
         return scraps;
