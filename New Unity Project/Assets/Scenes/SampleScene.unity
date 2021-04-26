@@ -5942,8 +5942,9 @@ MonoBehaviour:
   attackSpeedMultiplier: 2.5
   raycastSource: {fileID: 2100989727}
   dir: 1
-  minDistanceFromPlayer: 4
-  randomMovingTime: 10
+  minDistanceFromPlayer: 2
+  randomMovingTime: 20
+  rotationSpeed: 180
   estimatedMoveTime: 0
 --- !u!1 &1734518848
 GameObject:

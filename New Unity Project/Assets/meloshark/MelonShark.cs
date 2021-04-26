@@ -1,6 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.UIElements;
+using Random = UnityEngine.Random;
 
 public class MelonShark : MonoBehaviour
 {
@@ -15,6 +19,7 @@ public class MelonShark : MonoBehaviour
     public float minDistanceFromPlayer = 4.0f;
     public float randomMovingTime = 10.0f;
     private float rmTimer = 0.0f;
+    public float rotationSpeed = 100;
 
     //"AI"
     private bool locked = false;
@@ -54,10 +59,49 @@ public class MelonShark : MonoBehaviour
                 state = 3;
                 break;
             case 3:
+                if ((target - transform.position).normalized.x < 0 && transform.rotation.eulerAngles.y != 180)
+                {
+                    transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
+                    if ((transform.rotation.eulerAngles.y > 175) && (transform.rotation.eulerAngles.y < 185))
+                    {
+                        transform.rotation = Quaternion.Euler(0, 180 , 0);
+                        state = 4;
+                    }
+                }
+                else if ((target - transform.position).normalized.x > 0 && transform.rotation.eulerAngles.y != 0)
+                {
+                    transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
+                    if (transform.rotation.eulerAngles.y < 5 || transform.rotation.eulerAngles.y > 355)
+                    {
+                        transform.rotation = Quaternion.Euler(0, 0 , 0);
+                        state = 4;
+                    }
+                }
+                else
+                {
+                    state = 4;
+                }
+                break;
+            case 4:
                 rmTimer += Time.deltaTime;
                 moveTowardsTarget();
-                if (transform.position == target) state = 2;
-                else if (rmTimer >= randomMovingTime) { state = 1; locked = true; rmTimer = 0.0f; moveTime = 0.0f; }
+                if (Vector3.Distance(transform.position, target) < 1) state = 2;
+                else if (rmTimer >= randomMovingTime) { state = 5; locked = true; rmTimer = 0.0f; moveTime = 0.0f; }
+                break;
+            case 5:
+                if (transform.rotation.eulerAngles.y != 0)
+                {
+                    transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
+                    if (transform.rotation.eulerAngles.y < 5 || transform.rotation.eulerAngles.y > 355)
+                    {
+                        transform.rotation = Quaternion.Euler(0, 0 , 0);
+                        state = 1;
+                    }
+                }
+                else
+                {
+                    state = 1;
+                }
                 break;
         }
 
@@ -66,7 +110,12 @@ public class MelonShark : MonoBehaviour
             Debug.Log(Vector3.Distance(playerTransform.position, transform.position));
         }*/
     }
-    
+
+    public void OnDrawGizmos()
+    {
+        Gizmos.DrawLine(target, transform.position);
+    }
+
     public void SearchForPlayer()
     {
         var colliders = Physics.OverlapSphere(transform.position, attackRange);
@@ -104,6 +153,11 @@ public class MelonShark : MonoBehaviour
             float y = Random.Range(Camera.main.ScreenToWorldPoint(new Vector2(0, 0)).y, Camera.main.ScreenToWorldPoint(new Vector2(0, Screen.height)).y);
 
             Vector3 pos = new Vector3(x, y, 0.0f);
+            if (HandleUtility.DistancePointLine(playerTransform.position, transform.position, pos) <
+                minDistanceFromPlayer)
+            {
+                continue;
+            }
             if (Vector3.Distance(pos, playerTransform.position) > minDistanceFromPlayer)
 			{
                 target = pos;
@@ -115,8 +169,10 @@ public class MelonShark : MonoBehaviour
     }
 
     private void moveTowardsTarget()
-	{
-        moveTime += Time.deltaTime;
+    {
+        Vector3 diff = target - source;
+        transform.position += diff.normalized * moveSpeed * Time.deltaTime;
+        /*moveTime += Time.deltaTime;
         if (moveTime < estimatedMoveTime)
         {
             float ratio = moveTime / estimatedMoveTime;
@@ -128,6 +184,6 @@ public class MelonShark : MonoBehaviour
         else
 		{
             transform.position = target;
-		}
+		}*/
     }
 }
