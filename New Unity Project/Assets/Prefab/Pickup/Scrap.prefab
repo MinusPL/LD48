@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 1960523761752119979}
   - component: {fileID: 1960523761752119978}
   - component: {fileID: 1960523761752119981}
+  - component: {fileID: 1357859085801832399}
   m_Layer: 0
   m_Name: Scrap
-  m_TagString: Untagged
+  m_TagString: Entity
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -58,6 +59,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1dfd9e0cdb50e8489e7041c5df80b52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1357859085801832399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1960523761752119976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dda5eae1843e3545a1777fe69f77dac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entityInfo:
+    id: 0
+    name: 
+    description: 
+    texture: {fileID: 0}
 --- !u!1001 &6075080469562963820
 PrefabInstance:
   m_ObjectHideFlags: 0
