@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
 
-public class MelonShark : MonoBehaviour
+public class MelonShark : Enemy
 {
     // Start is called before the first frame update
     public float moveSpeed = 1.0f;

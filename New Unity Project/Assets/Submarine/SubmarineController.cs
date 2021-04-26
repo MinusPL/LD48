@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SubmarineController : MonoBehaviour
 {
@@ -124,12 +125,11 @@ public class SubmarineController : MonoBehaviour
             Damage(100.0f * dmgRatio);
 		}
 
-
-        //TODO
+        
         if(currentHealth <= 0.0f)
-		{
-            Destroy(gameObject);
-		}
+        {
+            SceneManager.LoadScene(2);
+        }
     }
 
     public void Damage(float dmg)
