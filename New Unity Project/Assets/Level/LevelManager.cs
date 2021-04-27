@@ -60,6 +60,27 @@ public class LevelManager : MonoBehaviour
     //Helena
     public GameObject helena;
 
+    //chair
+    public GameObject chair;
+    public float chanceForChair = 1.0f;
+    public float minDepthForChair = 250.0f;
+    public float maxDepthForChair = 750.0f;
+    private bool chairSpawned = false;
+
+    //skeleton
+    public GameObject skeleton;
+    public float chanceForSkel = 1.0f;
+    public float minDepthForSkel = 500.0f;
+    public float maxDepthForSkel = 1400.0f;
+    private bool skelSpawned = false;
+
+    //skeleton
+    public GameObject photo;
+    public float chanceForPhoto = 100.0f;
+    public float minDepthForPhoto = 1068.0f;
+    public float maxDepthForPhoto = 1069.0f;
+    private bool photoSpawned = false;
+
     //Other values
     public float timeForSpawn = 0.5f;
 	private float spawnerTimer = 0.0f;
@@ -115,6 +136,30 @@ public class LevelManager : MonoBehaviour
                 if (chance <= chanceForLodon)
                 {
                     SpawnAgemlodon();
+                }
+            }
+
+            if (player.transform.position.y >= -maxDepthForSkel && player.transform.position.y <= -minDepthForSkel)
+            {
+                if (chance <= chanceForSkel)
+                {
+                    SpawnSkeleton();
+                }
+            }
+
+            if (player.transform.position.y >= -maxDepthForChair && player.transform.position.y <= -minDepthForChair)
+            {
+                if (chance <= chanceForLodon)
+                {
+                    SpawnChair();
+                }
+            }
+
+            if (player.transform.position.y >= -maxDepthForPhoto && player.transform.position.y <= -minDepthForPhoto)
+            {
+                if (chance <= chanceForPhoto)
+                {
+                    SpawnPhoto();
                 }
             }
 
@@ -188,7 +233,7 @@ public class LevelManager : MonoBehaviour
         var obj = Instantiate(melonShark);
         obj.transform.position = new Vector3(newLocation.x, newLocation.y);
         float side = Vector3.Dot(obj.transform.position, player.transform.position);
-        obj.GetComponent<Shark>().dir = side < 0 ? (short)-1 : (short)1;
+        obj.GetComponent<MelonShark>().dir = side < 0 ? (short)-1 : (short)1;
     }
 
     public void SpawnDolphin()
@@ -199,7 +244,7 @@ public class LevelManager : MonoBehaviour
         var obj = Instantiate(dolphin);
         obj.transform.position = new Vector3(newLocation.x, newLocation.y);
         float side = Vector3.Dot(obj.transform.position, player.transform.position);
-        obj.GetComponent<Shark>().dir = side < 0 ? (short)-1 : (short)1;
+        obj.GetComponent<Dolphin>().dir = side < 0 ? (short)-1 : (short)1;
     }
 
     public void SpawnAgemlodon()
@@ -211,6 +256,45 @@ public class LevelManager : MonoBehaviour
         obj.transform.position = new Vector3(newLocation.x, newLocation.y);
         float side = Vector3.Dot(obj.transform.position, player.transform.position);
         obj.GetComponent<Shark>().dir = side < 0 ? (short)-1 : (short)1;
+    }
+
+    public void SpawnChair()
+    {
+        if (!chairSpawned)
+        {
+            Vector2 newCoordinates = Random.insideUnitCircle * endDistance;
+            Vector3 newLocation = player.transform.position + new Vector3(newCoordinates.x, newCoordinates.y);
+            if (Vector3.Distance(player.transform.position, newLocation) < startDistance) return;
+            var obj = Instantiate(chair);
+            obj.transform.position = new Vector3(newLocation.x, newLocation.y);
+            chairSpawned = true;
+        }
+    }
+
+    public void SpawnSkeleton()
+    {
+        if (!skelSpawned)
+        {
+            Vector2 newCoordinates = Random.insideUnitCircle * endDistance;
+            Vector3 newLocation = player.transform.position + new Vector3(newCoordinates.x, newCoordinates.y);
+            if (Vector3.Distance(player.transform.position, newLocation) < startDistance) return;
+            var obj = Instantiate(skeleton);
+            obj.transform.position = new Vector3(newLocation.x, newLocation.y);
+            skelSpawned = true;
+        }
+    }
+
+    public void SpawnPhoto()
+	{
+        if (!photoSpawned)
+        {
+            float x = Random.Range(-40.0f, 40.0f) + player.transform.position.x;
+            float y = 1068.5f;
+            Vector3 pos = new Vector3(x, y);
+            var obj = Instantiate(photo);
+            obj.transform.position = pos;
+            photoSpawned = true;
+        }
     }
 
     public void SpawnAngler()

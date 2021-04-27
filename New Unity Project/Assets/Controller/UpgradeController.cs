@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UpgradeController : MonoBehaviour
 {
-    private int scraps = 100000;
+    private int scraps = 0;
     public GameObject submarine;
     private SubmarineController subController;
     public int healthUpgradeCost = 50;

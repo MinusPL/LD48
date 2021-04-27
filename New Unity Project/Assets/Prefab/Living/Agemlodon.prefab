@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1262038707
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1262038708}
+  m_Layer: 0
+  m_Name: RayCastSource
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1262038708
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1262038707}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.068, y: 0.078, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3085709479704394573}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3085709479704394574
 GameObject:
   m_ObjectHideFlags: 0
@@ -10,9 +40,17 @@ GameObject:
   m_Component:
   - component: {fileID: 3085709479704394573}
   - component: {fileID: 7488389826662184409}
+  - component: {fileID: 174829047}
+  - component: {fileID: 174829045}
+  - component: {fileID: 174829050}
+  - component: {fileID: 174829051}
+  - component: {fileID: 174829052}
+  - component: {fileID: 174829053}
+  - component: {fileID: 174829046}
+  - component: {fileID: 9185652749830160779}
   m_Layer: 0
   m_Name: Agemlodon
-  m_TagString: Untagged
+  m_TagString: Entity
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,6 +67,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 3267393488513983450}
+  - {fileID: 1262038708}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -44,12 +83,138 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ee24553ed9ba314aa6a83c84ad51c31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 10
   moveSpeed: 2
   attackRange: 7
   attackSpeedMultiplier: 2.5
-  animator: {fileID: 0}
-  raycastSource: {fileID: 0}
+  animator: {fileID: 174829046}
+  raycastSource: {fileID: 1262038708}
   dir: 1
+--- !u!54 &174829047
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3085709479704394574}
+  serializedVersion: 2
+  m_Mass: 100
+  m_Drag: 2
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 120
+  m_CollisionDetection: 0
+--- !u!136 &174829045
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3085709479704394574}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.42175445
+  m_Height: 2.5493534
+  m_Direction: 0
+  m_Center: {x: 0.18648338, y: 0.017189503, z: 0}
+--- !u!136 &174829050
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3085709479704394574}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.29100132
+  m_Height: 0.76900136
+  m_Direction: 1
+  m_Center: {x: 0.26399773, y: -0.5087463, z: 0}
+--- !u!136 &174829051
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3085709479704394574}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.26625156
+  m_Height: 1.0274999
+  m_Direction: 1
+  m_Center: {x: 0.041249912, y: 0.65724486, z: 0}
+--- !u!136 &174829052
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3085709479704394574}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.52909374
+  m_Height: 1.9048485
+  m_Direction: 1
+  m_Center: {x: -1.6070318, y: 0.13443303, z: 0}
+--- !u!136 &174829053
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3085709479704394574}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.09220699
+  m_Height: 0.85495317
+  m_Direction: 0
+  m_Center: {x: 1.6767315, y: 0.069510505, z: 0}
+--- !u!95 &174829046
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3085709479704394574}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6a175ea745b07404a80f6ae7ffd912d8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &9185652749830160779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3085709479704394574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dda5eae1843e3545a1777fe69f77dac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entityInfo:
+    id: 6
+    name: Agemlodon
+    description: "Lives down from approximately 2400 meters below the water surface.
+      This mysterious creature wasn\u2019t known to the world until very recently.
+      Biologists suggest that the creature used to live in deeper parts of the ocean
+      but something forced it out of its natural habitat. "
+    texture: {fileID: 2800000, guid: 0836bba37234add4fac417f496422111, type: 3}
 --- !u!1001 &3085709480595391537
 PrefabInstance:
   m_ObjectHideFlags: 0

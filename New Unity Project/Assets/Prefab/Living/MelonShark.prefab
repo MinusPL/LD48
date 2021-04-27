@@ -78,6 +78,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22c54667681a5be4695ec7d1859f1412, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 10
   moveSpeed: 2
   attackRange: 7
   attackSpeedMultiplier: 2.5
@@ -100,10 +101,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entityInfo:
-    id: 0
-    name: 
-    description: 
-    texture: {fileID: 0}
+    id: 4
+    name: Melon Whale
+    description: "Lives down to approximately 4000 meters below the water surface.
+      Despite its sharp teeth, the creature isn\u2019t very aggressive. Tends to
+      stay in one spot for a while and move on. "
+    texture: {fileID: 2800000, guid: 053b4901752729f4faadd77b65b7516e, type: 3}
 --- !u!1 &3940102520686150936
 GameObject:
   m_ObjectHideFlags: 0

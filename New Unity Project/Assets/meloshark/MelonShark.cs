@@ -156,11 +156,10 @@ public class MelonShark : Enemy
             float y = Random.Range(Camera.main.ScreenToWorldPoint(new Vector2(0, 0)).y, Camera.main.ScreenToWorldPoint(new Vector2(0, Screen.height)).y);
 
             Vector3 pos = new Vector3(x, y, 0.0f);
-            if (HandleUtility.DistancePointLine(playerTransform.position, transform.position, pos) <
-                minDistanceFromPlayer)
-            {
-                continue;
-            }
+            //if (HandleUtility.DistancePointLine(playerTransform.position, transform.position, pos) < minDistanceFromPlayer)
+            //{
+            //    continue;
+            //}
             if (Vector3.Distance(pos, playerTransform.position) > minDistanceFromPlayer)
 			{
                 target = pos;

@@ -206,7 +206,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 135776319}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.07, y: 0, z: 0}
+  m_LocalPosition: {x: -2.322, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1469461791}
@@ -460,7 +460,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 127
+    m_Bits: 639
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
@@ -546,6 +546,18 @@ MonoBehaviour:
   minDepthForAngler: 1000
   maxDepthForAngler: 1300
   helena: {fileID: 7302072275168871137, guid: 4d849a9a91de8e24cbd41ea8ab5c8272, type: 3}
+  chair: {fileID: 4861182411208478278, guid: 2084e7697af488a49b64cc393d4a7f4d, type: 3}
+  chanceForChair: 1
+  minDepthForChair: 250
+  maxDepthForChair: 750
+  skeleton: {fileID: 7902927343795634061, guid: 3fba547226708404f877de91c3eb419a, type: 3}
+  chanceForSkel: 1
+  minDepthForSkel: 500
+  maxDepthForSkel: 1400
+  photo: {fileID: 841055410805513018, guid: 2e2dd2cce28e3c64993f88221bff4baa, type: 3}
+  chanceForPhoto: 100
+  minDepthForPhoto: 1068
+  maxDepthForPhoto: 1069
   timeForSpawn: 0.1
 --- !u!4 &546269195
 Transform:
@@ -5826,7 +5838,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -7248433306131343934, guid: d157490a9be4d9c45a52bbe75f1660f5, type: 2}
   m_audioClip: {fileID: 8300000, guid: d1e3ce2d5e5ddb247a4b58c987301978, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -6056,6 +6068,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 195480723798904760, guid: 92a96a0e4fe92e64789ff30bc2576eaa, type: 3}
+      propertyPath: toSpawnHeight
+      value: -200
+      objectReference: {fileID: 0}
+    - target: {fileID: 195480723798904760, guid: 92a96a0e4fe92e64789ff30bc2576eaa, type: 3}
+      propertyPath: fromSpawnHeight
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 195480723798904762, guid: 92a96a0e4fe92e64789ff30bc2576eaa, type: 3}
       propertyPath: m_Name
       value: Fish7
@@ -6225,6 +6245,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fish4
       objectReference: {fileID: 0}
+    - target: {fileID: 1926709158125229119, guid: e806ac771cc06a64a814f504ec69a05e, type: 3}
+      propertyPath: toSpawnHeight
+      value: -150
+      objectReference: {fileID: 0}
+    - target: {fileID: 1926709158125229119, guid: e806ac771cc06a64a814f504ec69a05e, type: 3}
+      propertyPath: fromSpawnHeight
+      value: -50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e806ac771cc06a64a814f504ec69a05e, type: 3}
 --- !u!1001 &1999548980233432445
@@ -6234,6 +6262,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1999548980130407317, guid: 62d9b8c483464764696a93a445f0e860, type: 3}
+      propertyPath: toSpawnHeight
+      value: -350
+      objectReference: {fileID: 0}
+    - target: {fileID: 1999548980130407317, guid: 62d9b8c483464764696a93a445f0e860, type: 3}
+      propertyPath: fromSpawnHeight
+      value: -100
+      objectReference: {fileID: 0}
     - target: {fileID: 1999548980130407322, guid: 62d9b8c483464764696a93a445f0e860, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -6326,6 +6362,14 @@ PrefabInstance:
     - target: {fileID: 2277449472504449448, guid: 11f75df6e12335a45b042ce9277ae874, type: 3}
       propertyPath: m_Name
       value: Fish3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2277449472504449450, guid: 11f75df6e12335a45b042ce9277ae874, type: 3}
+      propertyPath: toSpawnHeight
+      value: -600
+      objectReference: {fileID: 0}
+    - target: {fileID: 2277449472504449450, guid: 11f75df6e12335a45b042ce9277ae874, type: 3}
+      propertyPath: fromSpawnHeight
+      value: -350
       objectReference: {fileID: 0}
     - target: {fileID: 2277449472504449451, guid: 11f75df6e12335a45b042ce9277ae874, type: 3}
       propertyPath: m_RootOrder
@@ -6544,6 +6588,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4364220558581376205, guid: 08ae3ed2b9644d647be08f65a36f203c, type: 3}
+      propertyPath: toSpawnHeight
+      value: -150
+      objectReference: {fileID: 0}
+    - target: {fileID: 4364220558581376205, guid: 08ae3ed2b9644d647be08f65a36f203c, type: 3}
+      propertyPath: fromSpawnHeight
+      value: 150
+      objectReference: {fileID: 0}
     - target: {fileID: 4364220558581376206, guid: 08ae3ed2b9644d647be08f65a36f203c, type: 3}
       propertyPath: m_RootOrder
       value: 17
@@ -6653,6 +6705,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4643668789766029797, guid: 57e06d42f819e7e4bb1150361d054694, type: 3}
+      propertyPath: toSpawnHeight
+      value: -250
+      objectReference: {fileID: 0}
+    - target: {fileID: 4643668789766029797, guid: 57e06d42f819e7e4bb1150361d054694, type: 3}
+      propertyPath: fromSpawnHeight
+      value: -50
+      objectReference: {fileID: 0}
     - target: {fileID: 4643668789766029799, guid: 57e06d42f819e7e4bb1150361d054694, type: 3}
       propertyPath: m_Name
       value: Fish1
@@ -6687,6 +6747,14 @@ PrefabInstance:
     - target: {fileID: 5962946525576988936, guid: 6dcecbc1cdb0e2f4f99042d6475b73f8, type: 3}
       propertyPath: m_Name
       value: Fish6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5962946525576988938, guid: 6dcecbc1cdb0e2f4f99042d6475b73f8, type: 3}
+      propertyPath: toSpawnHeight
+      value: -400
+      objectReference: {fileID: 0}
+    - target: {fileID: 5962946525576988938, guid: 6dcecbc1cdb0e2f4f99042d6475b73f8, type: 3}
+      propertyPath: fromSpawnHeight
+      value: -200
       objectReference: {fileID: 0}
     - target: {fileID: 5962946525576988939, guid: 6dcecbc1cdb0e2f4f99042d6475b73f8, type: 3}
       propertyPath: m_RootOrder
@@ -6767,6 +6835,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fish8
       objectReference: {fileID: 0}
+    - target: {fileID: 6653453554478705374, guid: dfc11215dbb12f64286ecbfafdebf753, type: 3}
+      propertyPath: toSpawnHeight
+      value: -150
+      objectReference: {fileID: 0}
+    - target: {fileID: 6653453554478705374, guid: dfc11215dbb12f64286ecbfafdebf753, type: 3}
+      propertyPath: fromSpawnHeight
+      value: 150
+      objectReference: {fileID: 0}
     - target: {fileID: 6653453554478705375, guid: dfc11215dbb12f64286ecbfafdebf753, type: 3}
       propertyPath: m_RootOrder
       value: 16
@@ -6823,6 +6899,14 @@ PrefabInstance:
     - target: {fileID: 8392658663273573080, guid: f9f9fe9e1e4bb114484bac61e78da101, type: 3}
       propertyPath: m_Name
       value: Fish2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8392658663273573082, guid: f9f9fe9e1e4bb114484bac61e78da101, type: 3}
+      propertyPath: toSpawnHeight
+      value: -150
+      objectReference: {fileID: 0}
+    - target: {fileID: 8392658663273573082, guid: f9f9fe9e1e4bb114484bac61e78da101, type: 3}
+      propertyPath: fromSpawnHeight
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 8392658663273573083, guid: f9f9fe9e1e4bb114484bac61e78da101, type: 3}
       propertyPath: m_RootOrder

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7448725125114981034}
   - component: {fileID: 848141329}
   - component: {fileID: 848141332}
+  - component: {fileID: 919521328738164931}
   m_Layer: 9
   m_Name: Dolphin
   m_TagString: Entity
@@ -78,6 +79,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &919521328738164931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2468624993536614060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dda5eae1843e3545a1777fe69f77dac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entityInfo:
+    id: 5
+    name: Dolphin
+    description: "Lives down to approximately 1000 meters below the water surface.
+      A mild natured creature. It won\u2019t attack you but it likes causing mischief.  "
+    texture: {fileID: 2800000, guid: 322563ed550d4514298846c9b76abaa0, type: 3}
 --- !u!1001 &2468624994107041133
 PrefabInstance:
   m_ObjectHideFlags: 0
